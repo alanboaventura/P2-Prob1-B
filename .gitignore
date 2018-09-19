@@ -1,1 +1,5 @@
-/P2-Prob1-B/nbproject/private/
+P2-Prob1-B/nbproject/private/
+nbproject/private/
+dist/
+build/
+/.idea/

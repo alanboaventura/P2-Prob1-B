@@ -11,12 +11,9 @@ public class ReprodutorDeAudio implements FormatoAudio {
     // Segundos
     private Integer localizaoAudio;
 
-    private wmaPlay wmaPlay;
-
-    private AIFFSuperPlayer aiffSuperPlayer;
-
-    private WAVPlayer wavPlayer;
-
+    private Object audio;
+    
+    
     @Override
     public void abrir(String arquivo) {
         if (arquivo == null) {
@@ -27,15 +24,15 @@ public class ReprodutorDeAudio implements FormatoAudio {
 
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay = new wmaPlay();
-                wmaPlay.setFile(arquivo);
-                wmaPlay.open();
+                audio = new wmaPlay();
+                ((wmaPlay)audio).setFile(arquivo);
+                ((wmaPlay)audio).open();
                 break;
             case "aiff":
-                aiffSuperPlayer = new AIFFSuperPlayer(arquivo);
+                audio = new AIFFSuperPlayer(arquivo);
                 break;
             case "wav":
-                wavPlayer = new WAVPlayer(arquivo);
+                audio = new WAVPlayer(arquivo);
                 break;
         }
     }
@@ -44,14 +41,14 @@ public class ReprodutorDeAudio implements FormatoAudio {
     public void reproduzir() {
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay.setLocation(localizaoAudio);
-                wmaPlay.play();
+                ((wmaPlay)audio).setLocation(localizaoAudio);
+                ((wmaPlay)audio).play();
                 break;
             case "aiff":
-                aiffSuperPlayer.play();
+                ((AIFFSuperPlayer)audio).play();
                 break;
             case "wav":
-                wavPlayer.play();
+                ((WAVPlayer)audio).play();
                 break;
         }
     }
@@ -60,14 +57,14 @@ public class ReprodutorDeAudio implements FormatoAudio {
     public void pausar() {
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay.stop();
-                localizaoAudio = wmaPlay.getLocation();
+                ((wmaPlay)audio).stop();
+                localizaoAudio = ((wmaPlay)audio).getLocation();
                 break;
             case "aiff":
-                localizaoAudio = aiffSuperPlayer.pause();
+                localizaoAudio = ((AIFFSuperPlayer)audio).pause();
                 break;
             case "wav":
-                wavPlayer.stop();
+                ((WAVPlayer)audio).stop();
                 break;
         }
     }
@@ -76,16 +73,16 @@ public class ReprodutorDeAudio implements FormatoAudio {
     public void parar() {
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay.stop();
-                wmaPlay.setLocation(0);
+                ((wmaPlay)audio).stop();
+                ((wmaPlay)audio).setLocation(0);
                 break;
             case "aiff":
-                aiffSuperPlayer.stop();
-                aiffSuperPlayer.setCursor(0);
+                ((AIFFSuperPlayer)audio).stop();
+                ((AIFFSuperPlayer)audio).setCursor(0);
                 break;
             case "wav":
-                wavPlayer.stop();
-                wavPlayer.reward(wavPlayer.reward(0));
+                ((WAVPlayer)audio).stop();
+                ((WAVPlayer)audio).reward(((WAVPlayer)audio).reward(0));
                 break;
         }
     }
@@ -94,15 +91,14 @@ public class ReprodutorDeAudio implements FormatoAudio {
     public void avancar(int segundos) {
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay.setLocation(wmaPlay.getLocation() + segundos);
+                ((wmaPlay)audio).setLocation(((wmaPlay)audio).getLocation() + segundos);
                 break;
             case "aiff":
-                final int localizacaoAtual = aiffSuperPlayer.pause();
-                aiffSuperPlayer.setCursor(localizacaoAtual + segundos);
-                aiffSuperPlayer.play();
+                ((AIFFSuperPlayer)audio).setCursor(((AIFFSuperPlayer)audio).pause() + segundos);
+                ((AIFFSuperPlayer)audio).play();
                 break;
             case "wav":
-                wavPlayer.forward(segundos * 1000);
+                ((WAVPlayer)audio).forward(segundos * 1000);
                 break;
         }
     }
@@ -111,15 +107,15 @@ public class ReprodutorDeAudio implements FormatoAudio {
     public void retornar(int segundos) {
         switch (extensaoArquivo) {
             case "wma":
-                wmaPlay.setLocation(wmaPlay.getLocation() - segundos);
+                ((wmaPlay)audio).setLocation(((wmaPlay)audio).getLocation() - segundos);
                 break;
             case "aiff":
-                final int localizacaoAtual = aiffSuperPlayer.pause();
-                aiffSuperPlayer.setCursor(localizacaoAtual - segundos);
-                aiffSuperPlayer.play();
+                final int localizacaoAtual = ((AIFFSuperPlayer)audio).pause();
+                ((AIFFSuperPlayer)audio).setCursor(localizacaoAtual - segundos);
+                ((AIFFSuperPlayer)audio).play();
                 break;
             case "wav":
-                wavPlayer.reward(segundos * 1000);
+                ((WAVPlayer)audio).reward(segundos * 1000);
                 break;
         }
     }
@@ -129,16 +125,16 @@ public class ReprodutorDeAudio implements FormatoAudio {
         switch (extensaoArquivo) {
             case "wma":
                 // Rever isso.
-                wmaPlay.stop();
-                wmaPlay = null;
+                ((wmaPlay)audio).stop();
+                audio = null;
                 System.gc();
                 break;
             case "aiff":
-                aiffSuperPlayer.release();
+                ((AIFFSuperPlayer)audio).release();
                 break;
             case "wav":
-                wavPlayer.stop(); // Ver se precisa parar.
-                wavPlayer = null;
+                ((WAVPlayer)audio).stop(); // Ver se precisa parar.
+                audio = null;
                 System.gc(); // Precisamos forçar a passagem do GC aqui para chamar o método destructor.
                 break;
         }

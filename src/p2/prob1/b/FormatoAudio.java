@@ -47,12 +47,20 @@ public interface FormatoAudio {
     /**
      * Método para liberar o arquivo de audio aberto anteriormente.
      * <p>
-     * <b>IMPORTANTE:</b> Implementar na lógica, o stop do arquivo antes da
-     * liberação.
+     * <b>IMPORTANTE:</b> Ao implementar o método, se atentar a necessidade de
+     * parar o arquivo antes da liberação em memória.
      */
     public void liberar();
 
+    /**
+     * Abre o arquivo informado via parâmetro e inicia a reprodução do mesmo.
+     *
+     * @param arquivo Nome do arquivo que deve ser aberto e reproduzido.
+     */
     public void reproduzirSimples(String arquivo);
 
+    /**
+     * Para a reprodução do arquivo e libera o mesmo em memória.
+     */
     public void pararSimples();
 }

@@ -1,5 +1,5 @@
-P2-Prob1-B/nbproject/private/
-nbproject/private/
-dist/
 build/
-/.idea/
+nbproject/
+build.xml
+*.iml
+*.idea

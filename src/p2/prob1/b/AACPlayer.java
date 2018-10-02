@@ -42,11 +42,16 @@ public class AACPlayer implements FormatoAudio {
 
     @Override
     public void reproduzirSimples(String arquivo) {
-
+        player = new problema1.AACPlayer(arquivo);
+        player.open();
+        player.setLocation(0);
+        player.play();
     }
 
     @Override
     public void pararSimples() {
-
+        player.stop();
+        player.stop();
+        player = null;
     }
 }

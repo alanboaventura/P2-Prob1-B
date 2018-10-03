@@ -1,7 +1,9 @@
 package p2.prob1.b.factory;
 
 import p2.prob1.b.FormatoAudio;
+import p2.prob1.b.adapter.FormatoAudioAacAdapter;
 import p2.prob1.b.adapter.FormatoAudioAiffAdapter;
+import p2.prob1.b.adapter.FormatoAudioMP3Adapter;
 import p2.prob1.b.adapter.FormatoAudioWavAdapter;
 import p2.prob1.b.adapter.FormatoAudioWmaAdapter;
 
@@ -9,6 +11,13 @@ import java.security.InvalidParameterException;
 
 /**
  * Factory para criação do objeto para manuseio de uma determinada extensão de arquivo de audio.
+ *
+ * Extensões suportadas:
+ * <ul>
+ * <li>WMA</li>
+ * <li>AIFF</li>
+ * <li>WAV</li>
+ * </ul>
  */
 public class FormatoAudioFactory {
 
@@ -29,6 +38,10 @@ public class FormatoAudioFactory {
                     return new FormatoAudioAiffAdapter(arquivo);
                 case "wav":
                     return new FormatoAudioWavAdapter(arquivo);
+                case "aac":
+                    return new FormatoAudioAacAdapter(arquivo);
+                case "mp3":
+                    return new FormatoAudioMP3Adapter(arquivo);
                 default:
                     throw new InvalidParameterException("Formato de arquivo de audio INVÁLIDO!");
             }

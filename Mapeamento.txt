@@ -1,0 +1,23 @@
+Grupo B
+Alan, Eduardo, Maik e Rafael.
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Factory Method
+	Creator:	 FormatoAudioFactory
+	ConcreteCreator: FormatoAudioFactory
+	Product:	 FormatoAudio
+	ConcreteProduct: A nova classe adapter criada, podendo ser uma das seguintes: FormatoAudioAacAdapter.java, 			 FormatoAudioAiffAdapter.java, FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 	   		 	 FormatoAudioWmaAdapter.java
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Adapter
+	Target:	 FormatoAudio
+	Adapter: 5 classes, sendo uma para cada formato de aúdio(FormatoAudioAacAdapter.java, 		 		 FormatoAudioAiffAdapter.java, FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 			 	 FormatoAudioWmaAdapter.java)
+	Adaptee: 5 classes disponibilizadas pelo professor pela biblioteca(AACPlayer, AIFFSuperPlayer, Estado, MP3DJ, 		 WAVPlayer e wmaPlay).
+	Client:	 classes Main.java, FormatoAudioFactory.java e a classe FormatoAudioFacade.java
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Façade
+	Classe Façade: 		 É a classe FormatoAudioFacade.java
+	Classes dos subsistemas: FormatoAudioAacAdapter.java, FormatoAudioAiffAdapter.java, 				 FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 				 FormatoAudioWmaAdapter.java
+----------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------

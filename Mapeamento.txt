@@ -11,13 +11,18 @@ Factory Method
 ----------------------------------------------------------------------------------------------------------------------
 Adapter
 	Target:	 FormatoAudio
-	Adapter: 5 classes, sendo uma para cada formato de a˙dio(FormatoAudioAacAdapter.java, 		 		 FormatoAudioAiffAdapter.java, FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 			 	 FormatoAudioWmaAdapter.java)
+	Adapter: 5 classes, sendo uma para cada formato de a√∫dio(FormatoAudioAacAdapter.java, 		 		 FormatoAudioAiffAdapter.java, FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 			 	 FormatoAudioWmaAdapter.java)
 	Adaptee: 5 classes disponibilizadas pelo professor pela biblioteca(AACPlayer, AIFFSuperPlayer, Estado, MP3DJ, 		 WAVPlayer e wmaPlay).
 	Client:	 classes Main.java, FormatoAudioFactory.java e a classe FormatoAudioFacade.java
 ----------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------
-FaÁade
-	Classe FaÁade: 		 … a classe FormatoAudioFacade.java
+Fa√ßade
+	Classe Fa√ßade: 		 √â a classe FormatoAudioFacade.java
 	Classes dos subsistemas: FormatoAudioAacAdapter.java, FormatoAudioAiffAdapter.java, 				 FormatoAudioMP3Adapter.java, FormatoAudioWavAdapter.java e 				 FormatoAudioWmaAdapter.java
 ----------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------
++-*+-*+-*+-*+-*+-*+-*+-*
+Observa√ß√µes do Professor:
+Parab√©ns!
+
+Nota (0-3):3,0
